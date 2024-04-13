@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Public IP Display</title>
+    </head>
+    <body>
+        <h1>Your Public IP Address</h1>
+	    <p id="public-ip">Loading...</p>
+
+	        <script>
+		        // Function to fetch the public IP address using a free API service (ipify.org)
+			        function getPublicIP() {
+				            fetch('https://api.ipify.org?format=json')
+					                    .then(response => response.json())
+							                    .then(data => {
+									                        document.getElementById('public-ip').textContent = data.ip;
+												                })
+														                .catch(error => {
+																                    console.error('Error fetching public IP:', error);
+																		                        document.getElementById('public-ip').textContent = 'Error';
+																					                });
+																							        }
+
+																								        // Call the function to get and display the public IP address
+																									        getPublicIP();
+																										    </script>
+																										    </body>
+																										    </html>

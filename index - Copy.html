@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IP Address</title>
+</head>
+<body>
+	<h1>Your IP Address</h1>
+	<p id="systemIp"></p>
+	<p id="publicIp"></p>
+
+	<script type="text/javascript">
+		// Display system IP
+		if (navigator.connection && navigator.connection.effectiveType) {
+			document.getElementById("systemIp").innerText = "System IP: " + navigator.connection.effectiveType;
+		} else {
+			document.getElementById("systemIp").innerText = "System IP: Unavailable";
+		}
+
+		// Display public IP using ipify.org
+		fetch('https://api.ipify.org?format=json')
+			.then(response => response.json())
+			.then(data => {
+				document.getElementById("publicIp").innerText = "Public IP: " + data.ip;
+			});
+	</script>
+</body>
+</html>
